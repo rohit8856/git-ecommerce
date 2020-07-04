@@ -1,0 +1,40 @@
+{% extends 'shop/basic.html' %}
+<!-- template inheritance -->
+{% block title%}Contact Us{% endblock %}
+{% block body%}
+<div class="container my-3">
+    <h3>Conatct Us BOy</h3>
+<form action="/shop/contact/" method="POST">{% csrf_token %} 
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="name" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your email">
+      </div>
+
+      <div class="form-group">
+        <label for="Phone">Phone </label>
+        <input type="tel" class="form-control" id="number" name="number" placeholder="Enter Your Phone number">
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Tell how can i help you ?</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+{% if thank %}
+alert('Thanks for Contacting us');
+localStorage.clear();
+// to redirect back to shop page
+document.location = "/shop/contact";
+{% endif  %}
+</script>
+ {% endblock %}
